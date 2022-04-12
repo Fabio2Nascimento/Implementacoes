@@ -16,7 +16,7 @@ const Index = () => {
 
           <div className='p-12 overflow-y-auto'>
             <div className='-mt-11'>
-              <p className='font-sans font-semibold text-2xl '>Abril 12, 2022</p>
+              <p className='font-sans font-semibold text-2xl '>Abril 12, 2022 - Release 90.5.6</p>
               <div className='flex flex-row '>
                 <div className='bg-[#41F353] w-28 h-9 rounded-full'>
                   <p className='font-sans text-xs text-center'>Customização <br /> Simples</p>
@@ -30,7 +30,7 @@ const Index = () => {
             </div>
 
             <div className=''>
-              <p className='font-sans font-semibold text-2xl '>Março 17, 2022</p>
+              <p className='font-sans font-semibold text-2xl '>Março 17, 2022 - Release 90.4.2</p>
               <div className='flex flex-row '>
                 <div className='bg-[#41F353] w-28 h-9 rounded-full'>
                   <p className='font-sans text-xs text-center'>Customização <br /> Simples</p>
@@ -44,7 +44,7 @@ const Index = () => {
             </div>
 
             <div className=''>
-              <p className='font-sans font-semibold text-2xl '>Janeiro 07, 2022</p>
+              <p className='font-sans font-semibold text-2xl '>Janeiro 07, 2022 - Release 90.0.3</p>
               <div className='flex flex-row '>
                 <div className='bg-[#41F353] w-28 h-9 rounded-full'>
                   <p className='font-sans text-xs text-center'>Customização <br /> Simples</p>

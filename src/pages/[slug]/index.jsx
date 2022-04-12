@@ -68,6 +68,7 @@ const Index = () => {
             <Link href='/'><a className='ml-5'>Release 90.2.1</a></Link>
             <Link href='/'><a className='ml-5'>Release 90.1.0</a></Link>
             <Link href='/'><a className='ml-5'>Release 90.0.0</a></Link>
+            <Link href='/'><a className='ml-5 mt-10 hover:text-green-900'>Voltar</a></Link>
           </div>
         </div>
       </div>

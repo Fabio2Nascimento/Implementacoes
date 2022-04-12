@@ -1,11 +1,22 @@
 import React from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import useSWR from "swr";
 import Header from '../../components/Header'
+
+const fetcher = (url) => fetch(url).then((res) => res.json())
 
 const Index = () => {
   const router = useRouter()
   const { slug } = router.query
+  const { data, error } = useSWR(
+    "/api",
+    fetcher
+  );
+
+  if (error) return "An error has occurred.";
+  if (!data) return "Loading...";
+  const result = data.data
 
   return (
     <>
@@ -15,47 +26,26 @@ const Index = () => {
           <h1 className='p-12 font-sans font-semibold text-2xl'>C&S Sistemas - Release Notes</h1>
 
           <div className='p-12 overflow-y-auto'>
-            <div className='-mt-11'>
-              <p className='font-sans font-semibold text-2xl '>Abril 12, 2022 - Release 90.5.6</p>
-              <div className='flex flex-row '>
-                <div className='bg-[#41F353] w-28 h-9 rounded-full'>
-                  <p className='font-sans text-xs text-center'>Customização <br /> Simples</p>
-                </div>
-                <p className='ml-3 mt-2 font-roboto'>SEPARAR AS CONTAS CONTÁBEIS DO ISSQN A RECOLHER DAS ENTRADAS E DAS SAÍDAS</p>
-              </div>
-              <div className='max-w-3xl mt-4 ml-20 font-roboto'>
-                <p>1 - Adicionar o campo na guia Saídas da tela Contas contábeis - Geral em Escrituração | integração contábil e clique duas vezes em cima do registro da guia Contas contábeis - Geral</p>
-                <p>2 - Toda nota de saída de serviços deverá ser vinculadas as contas contábeis criadas/configuradas no item 1. A mesma regra deve ser seguida na exportação para o contábil.</p>
-              </div>
-            </div>
 
-            <div className=''>
-              <p className='font-sans font-semibold text-2xl '>Março 17, 2022 - Release 90.4.2</p>
-              <div className='flex flex-row '>
-                <div className='bg-[#41F353] w-28 h-9 rounded-full'>
-                  <p className='font-sans text-xs text-center'>Customização <br /> Simples</p>
+            {result.map((item, index) => (
+              <div className={index === 0 ? '-mt-11' : null}>
+                <p className='font-sans font-semibold text-2xl '>Abril 12, 2022 - Release {item.version}</p>
+                <div className='flex flex-row '>
+                  <div className='bg-[#41F353] w-28 h-9 rounded-full'>
+                    <p className='font-sans text-xs text-center mt-2'>{item.sistema}</p>
+                  </div>
+                  <p className='ml-3 mt-2 font-roboto'>{item.title}</p>
                 </div>
-                <p className='ml-3 mt-2 font-roboto'>SEPARAR AS CONTAS CONTÁBEIS DO ISSQN A RECOLHER DAS ENTRADAS E DAS SAÍDAS</p>
-              </div>
-              <div className='max-w-3xl mt-4 ml-20 font-roboto'>
-                <p>1 - Adicionar o campo na guia Saídas da tela Contas contábeis - Geral em Escrituração | integração contábil e clique duas vezes em cima do registro da guia Contas contábeis - Geral</p>
-                <p>2 - Toda nota de saída de serviços deverá ser vinculadas as contas contábeis criadas/configuradas no item 1. A mesma regra deve ser seguida na exportação para o contábil.</p>
-              </div>
-            </div>
+                <div className='max-w-3xl mt-4 ml-20 font-roboto'>
+                  {item.description.map(desc => {
+                    <p>{desc.item}</p>
+                  })}
 
-            <div className=''>
-              <p className='font-sans font-semibold text-2xl '>Janeiro 07, 2022 - Release 90.0.3</p>
-              <div className='flex flex-row '>
-                <div className='bg-[#41F353] w-28 h-9 rounded-full'>
-                  <p className='font-sans text-xs text-center'>Customização <br /> Simples</p>
                 </div>
-                <p className='ml-3 mt-2 font-roboto'>SEPARAR AS CONTAS CONTÁBEIS DO ISSQN A RECOLHER DAS ENTRADAS E DAS SAÍDAS</p>
               </div>
-              <div className='max-w-3xl mt-4 ml-20 font-roboto'>
-                <p>1 - Adicionar o campo na guia Saídas da tela Contas contábeis - Geral em Escrituração | integração contábil e clique duas vezes em cima do registro da guia Contas contábeis - Geral</p>
-                <p>2 - Toda nota de saída de serviços deverá ser vinculadas as contas contábeis criadas/configuradas no item 1. A mesma regra deve ser seguida na exportação para o contábil.</p>
-              </div>
-            </div>
+
+            ))}
+
           </div>
 
         </div>

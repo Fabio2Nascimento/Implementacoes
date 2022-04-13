@@ -11,7 +11,7 @@ export function Data(e) {
     'Setembro',
     'Outubro',
     'Novembro',
-    'Dezembro',
+    'Dezembro'
   ]
 
   function addZero(numero) {

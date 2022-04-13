@@ -46,7 +46,7 @@ const Index = () => {
                 </p>
                 <div className='flex flex-row '>
                   <div className='bg-[#41F353] w-28 h-9 rounded-full'>
-                    <p className='font-sans text-xs text-center mt-2'>
+                    <p className='font-bold text-xs text-center mt-2'>
                       {item.sistema}
                     </p>
                   </div>

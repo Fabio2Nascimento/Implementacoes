@@ -1,6 +1,7 @@
 {
   "name": "release_notes",
   "private": true,
+  "homepage" : "https://www.cessistemas.com.br/release-notes/" ,
   "scripts": {
     "dev": "next dev",
     "build": "next build",

@@ -1,0 +1,3 @@
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^cessistemas.com.br/release-notes$
+RewriteRule (.*) https://release-notes-flax.vercel.app/$1 [L]

@@ -35,9 +35,9 @@ const Index = () => {
       <div className='overflow-hidden grid grid-rows-1 grid-flow-col gap-4 relative '>
         <div className='col-span-2'>
         <Link href='/'>
-          <p className='p-12 font-sans font-semibold text-2xl hover:cursor-pointer'>
+          <h1 className='p-12 font-sans font-semibold text-2xl hover:cursor-pointer'>
             C&S Sistemas - Release Notes
-          </p>
+          </h1>
         </Link>
           <div className='p-12 overflow-y-auto'>
             {result.map((item, index) => (

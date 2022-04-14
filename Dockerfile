@@ -16,7 +16,7 @@ ENV NODE_ENV production
 # COPY --from=builder /my-project/next.config.js ./
 COPY --from=builder /my-project/src/public ./src/public
 COPY --from=builder /my-project/src ./src
-COPY --from=builder /my-project/.env ./.env
+
 COPY --from=builder /my-project/.next ./.next
 COPY --from=builder /my-project/node_modules ./node_modules
 COPY --from=builder /my-project/package.json ./package.json

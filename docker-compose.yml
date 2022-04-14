@@ -3,6 +3,8 @@ services:
     myapp:
         build: .
         image: release:1.0
+        environment:
+            - FAUNADB_SECRET=fnAEj_1uTwAAwW2IZJvMl3MmNJ-1k-u-jHwVFnXN
         ports:
             - 8082:3000
         networks:

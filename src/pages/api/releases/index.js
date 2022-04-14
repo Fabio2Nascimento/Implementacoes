@@ -10,8 +10,16 @@ export default async (req, res) => {
           q.Lambda(show => q.Get(show))
         )
       )
-
-      const result = query.data.map(res => res.data)
+      
+      const result = query.data.map(res => (
+        {
+          id: res.ref.id,
+          sistema: res.data.sistema,
+          date: res.data.date,
+          version: res.data.version,
+          title: res.data.title,
+          description: res.data.description.map(des => des)
+        }))
       res.status(200).json({ data: result })
     }
   } catch (e) {

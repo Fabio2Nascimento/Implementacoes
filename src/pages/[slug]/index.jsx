@@ -11,7 +11,7 @@ const fetcher = url => fetch(url).then(res => res.json())
 const Index = () => {
   const router = useRouter()
   const { slug } = router.query
-  const { data, error } = useSWR('/api/releases', fetcher)
+  const { data, error } = useSWR(`/api/releases/` + slug, fetcher)
 
   if (error) return 'An error has occurred.'
   if (!data)
@@ -27,7 +27,7 @@ const Index = () => {
   const release = () => {
     let arrayVersion = result.map(i => i.version)
     const v = [...new Set(arrayVersion)]
-    return v.map((i) => ({release: i}))
+    return v.map((i) => ({ release: i }))
   }
   return (
     <>

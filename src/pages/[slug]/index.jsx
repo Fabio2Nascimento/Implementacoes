@@ -34,10 +34,11 @@ const Index = () => {
       <Header title={slug.charAt(0).toUpperCase() + slug.slice(1) + ' | Release Notes'} />
       <div className='overflow-hidden grid grid-rows-1 grid-flow-col gap-4 relative '>
         <div className='col-span-2'>
-          <h1 className='p-12 font-sans font-semibold text-2xl'>
+        <Link href='/'>
+          <p className='p-12 font-sans font-semibold text-2xl hover:cursor-pointer'>
             C&S Sistemas - Release Notes
-          </h1>
-
+          </p>
+        </Link>
           <div className='p-12 overflow-y-auto'>
             {result.map((item, index) => (
               <div key={index} className={index === 0 ? '-mt-11' : null}>
@@ -62,7 +63,7 @@ const Index = () => {
           </div>
         </div>
         <div className='hidden row-span-3 mt-28 mb-14 border-l border-black  '>
-          <div className='flex flex-col  place-content-center '>
+          <div className='flex flex-col  '>
             {release().map((i) => {
               <Link href='/'>
                 <a className='ml-5'>{i.release}</a>

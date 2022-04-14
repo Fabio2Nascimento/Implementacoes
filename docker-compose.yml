@@ -4,9 +4,9 @@ services:
         build: .
         image: release:1.0
         ports:
-                - 8082:3000
+            - 8082:3000
         networks:
-                - release-compose-network
+            - release-compose-network
         cap_drop:
             - NET_ADMIN
             - SYS_ADMIN

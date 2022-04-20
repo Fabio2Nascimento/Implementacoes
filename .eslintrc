@@ -1,13 +1,14 @@
 {
-  "parser": "",
+  "parser": "@typescript-eslint/parser",
   "extends": [
     "next",
+    "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     "plugin:prettier/recommended",
     "plugin:prettier/react"
     // "plugin:prettier/@typescript-eslint"
   ],
-  "plugins": ["react", "prettier"],
+  "plugins": ["@typescript-eslint", "react", "prettier"],
   "rules": {
     "react/react-in-jsx-scope": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]

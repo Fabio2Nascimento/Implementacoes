@@ -8,9 +8,12 @@
   "extends": [
     "plugin:react/recommended",
     "airbnb",
+    "plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint",
+    "prettier/airbnb",
     "prettier/react"
   ],
-  "parser": "",
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true

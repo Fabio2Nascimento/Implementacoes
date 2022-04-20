@@ -8,12 +8,12 @@ import {
 } from 'react-device-detect'
 import Image from 'next/image'
 import Header from '../components/Header'
-import Gestor from '../public/assets/gestor.png'
-import Checkout from '../public/assets/checkout.png'
-import Fluxo from '../public/assets/fluxo.png'
-import Contabil from '../public/assets/contabil.png'
-import Os from '../public/assets/os.png'
-import Vendas from '../public/assets/vendas.png'
+import Gestor from '../../public/assets/gestor.png'
+import Checkout from '../../public/assets/checkout.png'
+import Fluxo from '../../public/assets/fluxo.png'
+import Contabil from '../../public/assets/contabil.png'
+import Os from '../../public/assets/os.png'
+import Vendas from '../../public/assets/vendas.png'
 
 function Index() {
   const router = useRouter()

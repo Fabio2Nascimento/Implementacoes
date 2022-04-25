@@ -5,7 +5,7 @@ const Index = ({ children }) => {
     let color = null;
     switch (children) {
         case 'Os':
-            color = `bg-blue-500`;
+            color = `bg-lime-500`;
             break;
         case 'Gestor':
             color = `bg-orange-500`;
@@ -16,6 +16,7 @@ const Index = ({ children }) => {
         default:
     }
     // bg-[${color}]
+    // #489386
     return (
         <a className={`select-none uppercase ${color} rounded-full`}><b>&nbsp;</b><b>&nbsp;</b>C&S {children}<b>&nbsp;</b><b>&nbsp;</b></a>
     )

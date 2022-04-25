@@ -37,6 +37,7 @@ const Index = () => {
     const v = [...new Set(arrayVersion)]
     return v.map((i) => ({ release: i }))
   }
+
   return (
     <>
       <Header title={'Release Notes'} />
@@ -49,46 +50,46 @@ const Index = () => {
           </Link>
           <div className='p-12 overflow-y-auto'>
             {result.map((item, index) => (
-              <div key={index} className={index === 0 ? '-mt-11' : null}>
-                <p className='font-sans font-semibold text-2xl '>
+              <div  className={index === 0 ? '-mt-11' : null}>
+                <p key={index} className='font-sans font-semibold text-2xl '>
                   {Data(item.date)} - Release {item.version} - <TitleSistema>{item.sistema}</TitleSistema>
-              </p>
+                </p>
                 {
-                item.description.map((i, index) => (
-                  <>
-                    <div key={index} className='flex flex-row '>
-                      <div className='bg-[#41F353] w-16 h-9 rounded-full'>
-                        <p className='select-none font-bold text-xs text-center mt-2'>
-                          {i.requisito}
-                        </p>
+                  item.description.map((i, index) => (
+                    <>
+                      <div key={index} className='flex flex-row '>
+                        <div className='bg-[#41F353] w-16 h-9 rounded-full'>
+                          <p className='select-none font-bold text-xs text-center mt-2'>
+                            {i.requisito}
+                          </p>
+                        </div>
+                        <p className='ml-3 mt-2 font-roboto'>{i.title}</p>
                       </div>
-                      <p className='ml-3 mt-2 font-roboto'>{i.title}</p>
-                    </div>
-                    <div className='max-w-3xl mt-4 ml-20 font-roboto mb-3'>
-                      <p className='text-justify'>{i.item}</p>
-                    </div>
-                  </>
-                ))
-              }
+                      <div className='max-w-3xl mt-4 ml-20 font-roboto mb-3'>
+                        <p className='text-justify'>{i.item}</p>
+                      </div>
+                    </>
+                  ))
+                }
 
               </div>
             ))}
+          </div>
         </div>
-      </div>
-      <div className='hidden row-span-3 mt-28 mb-14 border-l border-black  '>
-        <div className='flex flex-col  '>
-          {release().map((i) => {
-            <Link href='/'>
-              <a className='ml-5'>{i.release}</a>
-            </Link>
-          })}
+        <div className='hidden row-span-3 mt-28 mb-14 border-l border-black  '>
+          <div className='flex flex-col  '>
+            {release().map((i) => {
+              <Link href='/'>
+                <a className='ml-5'>{i.release}</a>
+              </Link>
+            })}
 
-          <Link href='/'>
-            <a className='ml-5 mt-10 hover:text-green-900'>Voltar</a>
-          </Link>
+            <Link href='/'>
+              <a className='ml-5 mt-10 hover:text-green-900'>Voltar</a>
+            </Link>
+          </div>
         </div>
       </div>
-    </div>
     </>
   )
 }

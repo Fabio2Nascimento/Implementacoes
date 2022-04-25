@@ -15,7 +15,6 @@ export default async (req, res) => {
         sistema: sistema.charAt(0).toUpperCase() + sistema.slice(1),
         date: date,
         version: version,
-        title: title,
         description: description.map(des => des)
       }
       await faunaClient.query(

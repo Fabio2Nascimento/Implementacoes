@@ -65,7 +65,7 @@ const Index = () => {
                       <p className='ml-3 mt-2 font-roboto'>{i.title}</p>
                     </div>
                     <div className='max-w-3xl mt-4 ml-20 font-roboto mb-3'>
-                      <p className='indent-8'>{i.item}</p>
+                      <p className='text-justify'>{i.item}</p>
                     </div>
                   </>
                 ))

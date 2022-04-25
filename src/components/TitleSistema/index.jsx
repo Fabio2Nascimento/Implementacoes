@@ -17,7 +17,7 @@ const Index = ({ children }) => {
     }
     // bg-[${color}]
     return (
-        <a className={`select-none uppercase ${color} rounded-full`}><b>&nbsp;</b><b>&nbsp;</b>{children}<b>&nbsp;</b><b>&nbsp;</b></a>
+        <a className={`select-none uppercase ${color} rounded-full`}><b>&nbsp;</b><b>&nbsp;</b>C&S {children}<b>&nbsp;</b><b>&nbsp;</b></a>
     )
 }
 

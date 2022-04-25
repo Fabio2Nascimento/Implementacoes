@@ -10,16 +10,24 @@ export default async (req, res) => {
           q.Lambda(show => q.Get(show))
         )
       )
-      
+
       const result = query.data.map(res => (
         {
           id: res.ref.id,
           sistema: res.data.sistema,
           date: res.data.date,
           version: res.data.version,
-          title: res.data.title,
           description: res.data.description.map(des => des)
         }))
+      result.slice(0)
+        .reverse().sort(function (a, b) {
+          if (a.version < b.version || a.sistema < b.sistema) {
+            return -1;
+          } else {
+            return true;
+          }
+        })
+        
       res.status(200).json({ data: result })
     }
   } catch (e) {

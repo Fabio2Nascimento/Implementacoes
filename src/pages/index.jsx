@@ -36,7 +36,7 @@ const Index = () => {
   return (
     <>
       <Header title={'Release Notes'} />
-      <div className='grid grid-rows-1 grid-flow-col gap-4 w-full'>
+      <div className='grid grid-rows-1 grid-flow-col gap-4 overflow-x-hidden'>
         <div className='col-span-2'>
             <h1 className='select-none p-12 font-sans font-semibold text-4xl text-center'>
               C&S Sistemas - Release Notes
@@ -58,7 +58,7 @@ const Index = () => {
                         </div>
                         <p className='ml-3 mt-2 font-roboto'>{i.title}</p>
                       </div>
-                      <div className='w-[1000px] mt-4 ml-20 font-roboto mb-3'>
+                      <div className='w-[1000px]  mt-4 ml-20 font-roboto mb-3'>
                         <p className='text-justify'>{i.item}</p>
                       </div>
                     </>
@@ -70,15 +70,15 @@ const Index = () => {
           </div>
         </div>
         <div className='row-span-1 w-[200px] '>
-          <div className='flex flex-col mt-28 mb-14 border-l border-black fixed overflow-auto'>
+          <div className='flex flex-col h-[460px] mt-28 mb-14 border-l border-black fixed overflow-auto'>
             {release.map((i) => (
               <Link href={'#'+i.release}>
                 <a className='ml-5'>Release {i.release}</a>
               </Link>
             ))}
-            <Link href='/'>
+            {/* <Link href='/'>
               <a className='ml-5 mt-10 hover:text-green-900'>Voltar</a>
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>

@@ -14,7 +14,7 @@ WORKDIR /my-project
 ENV NODE_ENV production
 # If you are using a custom next.config.js file, uncomment this line.
 # COPY --from=builder /my-project/next.config.js ./
-COPY --from=builder /my-project/src/public ./src/public
+COPY --from=builder /my-project/public ./src/public
 COPY --from=builder /my-project/src ./src
 
 COPY --from=builder /my-project/.next ./.next

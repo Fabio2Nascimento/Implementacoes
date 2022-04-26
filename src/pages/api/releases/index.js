@@ -19,7 +19,12 @@ export default async (req, res) => {
           version: res.data.version,
           description: res.data.description.map(des => des)
         }))
-      result.slice(0)
+
+      const ids = result.map(o => o.version)
+      const release = result.filter(({ version }, index) => !ids.includes(version, index + 1)).map(r => ({ release: r.version }))
+
+      result
+        .slice(0)
         .reverse().sort(function (a, b) {
           if (a.version < b.version || a.sistema < b.sistema) {
             return -1;
@@ -27,8 +32,8 @@ export default async (req, res) => {
             return true;
           }
         })
-        
-      res.status(200).json({ data: result })
+
+      res.status(200).json({ data: [result, release] })
     }
   } catch (e) {
     res.status(400).json({ error: e.error })

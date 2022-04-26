@@ -24,33 +24,26 @@ const Index = () => {
   if (error) return 'An error has occurred.'
   if (!data)
     return (
-      <div className='flex justify-center items-center mt-52'>
+      <div className='flex justify-center items-center mt-52 overflow-hidden'>
         <div
           className={`animate-spin rounded-full h-32 w-32 border-b-8 `}
         ></div>
       </div>
     )
-  const result = data.data
-
-  const release = () => {
-    let arrayVersion = result.map(i => i.version)
-    const v = [...new Set(arrayVersion)]
-    return v.map((i) => ({ release: i }))
-  }
+  const result = data.data[0]
+  const release = data.data[1]
 
   return (
     <>
       <Header title={'Release Notes'} />
-      <div className='overflow-hidden grid grid-rows-1 grid-flow-col gap-4 relative '>
+      <div className='grid grid-rows-1 grid-flow-col gap-4 w-full'>
         <div className='col-span-2'>
-          <Link href='/'>
-            <h1 className='p-12 font-sans font-semibold text-2xl hover:cursor-pointer'>
+            <h1 className='select-none p-12 font-sans font-semibold text-4xl text-center'>
               C&S Sistemas - Release Notes
             </h1>
-          </Link>
-          <div className='p-12 overflow-y-auto'>
+          <div className='relative p-12 '>
             {result.map((item, index) => (
-              <div  className={index === 0 ? '-mt-11' : null}>
+              <div id={item.version} className={index === 0 ? '-mt-11' : null}>
                 <p key={index} className='font-sans font-semibold text-2xl '>
                   {Data(item.date)} - Release {item.version} - <TitleSistema>{item.sistema}</TitleSistema>
                 </p>
@@ -65,7 +58,7 @@ const Index = () => {
                         </div>
                         <p className='ml-3 mt-2 font-roboto'>{i.title}</p>
                       </div>
-                      <div className='max-w-3xl mt-4 ml-20 font-roboto mb-3'>
+                      <div className='w-[1000px] mt-4 ml-20 font-roboto mb-3'>
                         <p className='text-justify'>{i.item}</p>
                       </div>
                     </>
@@ -76,14 +69,13 @@ const Index = () => {
             ))}
           </div>
         </div>
-        <div className='hidden row-span-3 mt-28 mb-14 border-l border-black  '>
-          <div className='flex flex-col  '>
-            {release().map((i) => {
-              <Link href='/'>
-                <a className='ml-5'>{i.release}</a>
+        <div className='row-span-1 w-[200px] '>
+          <div className='flex flex-col mt-28 mb-14 border-l border-black fixed overflow-auto'>
+            {release.map((i) => (
+              <Link href={'#'+i.release}>
+                <a className='ml-5'>Release {i.release}</a>
               </Link>
-            })}
-
+            ))}
             <Link href='/'>
               <a className='ml-5 mt-10 hover:text-green-900'>Voltar</a>
             </Link>

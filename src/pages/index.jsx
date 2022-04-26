@@ -76,9 +76,6 @@ const Index = () => {
                 <a className='ml-5'>Release {i.release}</a>
               </Link>
             ))}
-            {/* <Link href='/'>
-              <a className='ml-5 mt-10 hover:text-green-900'>Voltar</a>
-            </Link> */}
           </div>
         </div>
       </div>

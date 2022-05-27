@@ -32,6 +32,11 @@ const Index = () => {
     )
   const result = data.data[0]
   const release = data.data[1]
+  // const release = data.data[1].sort(function (a, b) {
+  //   const va = parseFloat(a.release)
+  //   const vb = parseFloat(b.release)
+  //   return va - vb
+  // })
 
   return (
     <>
@@ -77,7 +82,7 @@ const Index = () => {
               <Link href={'#' + i.release}>
                 <a className='ml-5'>Release {i.release}</a>
               </Link>
-            ))}
+            )).reverse()}
           </div>
         </div>
       </div>

@@ -13,6 +13,9 @@ const Index = ({ children }) => {
         case 'Pdv':
             color = `bg-blue-700`;
             break;
+        case 'INDÚSTRIA':
+            color = `bg-slate-400`;
+            break;
         default:
     }
     // bg-[${color}]

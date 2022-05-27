@@ -5,11 +5,18 @@ export default async (req, res) => {
   try {
     if (req.method == 'GET') {
       let query = await faunaClient.query(
+        // q.Get(q.Documents(q.Collection('analytic')))
+        // q.All(q.Documents(q.Collection('analytic')))
+        // q.Let(q.Documents(q.Collection('analytic')))
         q.Map(
-          q.Paginate(q.Documents(q.Collection('analytic'))),
+          // q.All(q.Documents(q.Collection('analytic'))),
+          q.Paginate(q.Documents(q.Collection('analytic')), {
+            size: 100000,
+          }),
           q.Lambda(show => q.Get(show))
         )
       )
+      console.log(query)
 
       const result = await query.data.map(res => (
         {

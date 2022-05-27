@@ -6,7 +6,9 @@ export default async (req, res) => {
     if (req.method == 'GET') {
       let query = await faunaClient.query(
         q.Map(
-          q.Paginate(q.Documents(q.Collection('analytic'))),
+          q.Paginate(q.Documents(q.Collection('analytic')), {
+            size: 1000,
+          }),
           q.Lambda(show => q.Get(show))
         )
       )

@@ -38,17 +38,21 @@ const Index = () => {
       <Header title={'Release Notes'} />
       <div className='grid grid-rows-1 grid-flow-col gap-4 overflow-x-hidden'>
         <div className='col-span-2'>
-            <h1 className='select-none p-12 font-sans font-semibold text-4xl text-center'>
-              C&S Sistemas - Release Notes
-            </h1>
+          <h1 className='select-none p-12 font-sans font-semibold text-4xl text-center'>
+            C&S Sistemas - Release Notes
+          </h1>
           <div className='relative p-12 '>
             {result.map((item, index) => (
               <div id={item.version} className={index === 0 ? '-mt-11' : null}>
                 <p key={index} className='font-sans font-semibold text-2xl '>
-                  {Data(item.date)} - Release {item.version} - <TitleSistema>{item.sistema}</TitleSistema>
+                  {Data(item.date)} - Release {item.version} -{' '}
+                  <TitleSistema>{item.sistema}</TitleSistema>
                 </p>
-                {
-                  item.description.map((i, index) => (
+                {item.description
+                  .sort(function (a, b) {
+                    return a.requisito - b.requisito
+                  })
+                  .map((i, index) => (
                     <>
                       <div key={index} className='flex flex-row '>
                         <div className='bg-[#41F353] w-16 h-9 rounded-full'>
@@ -62,17 +66,15 @@ const Index = () => {
                         <p className='text-justify'>{i.item}</p>
                       </div>
                     </>
-                  ))
-                }
-
+                  ))}
               </div>
             ))}
           </div>
         </div>
         <div className='row-span-1 w-[200px] '>
           <div className='flex flex-col h-[460px] mt-28 mb-14 border-l border-black fixed overflow-auto'>
-            {release.map((i) => (
-              <Link href={'#'+i.release}>
+            {release.map(i => (
+              <Link href={'#' + i.release}>
                 <a className='ml-5'>Release {i.release}</a>
               </Link>
             ))}
@@ -84,4 +86,3 @@ const Index = () => {
 }
 
 export default Index
-

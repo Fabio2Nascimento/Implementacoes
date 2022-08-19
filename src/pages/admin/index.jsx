@@ -16,7 +16,7 @@ const Index = () => {
     const { sistema, date, version, description } = values
     const obj = {
       sistema,
-      date: new Intl.DateTimeFormat('pt-BR', {
+      date: new Intl.DateTimeFormat('fr-CA', {
         year: 'numeric',
         month: '2-digit',
         day: '2-digit'
@@ -30,11 +30,22 @@ const Index = () => {
         item: i.item
       }))
     }
-    alert(JSON.stringify(obj, null, 2))
+    // alert(JSON.stringify(obj, null, 2))
+
+    const res = await fetch('api/release/create', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(obj)
+    })
+
+    const data = await res.json()
+    // alert(data)
   }
   //   new Intl.DateTimeFormat("fr-CA", {year: "numeric", month: "2-digit", day: "2-digit"}).format(Date.now())
   return (
-    <div className='flex items-stretch  '>
+    <div className='flex justify-center  '>
       <Formik
         //className='max-w-md w-full space-y-8'
         initialValues={{
@@ -68,21 +79,21 @@ const Index = () => {
           <Form>
             <h5>Cadastro Release</h5>
 
-            <div className='flex flex-col'>
-              <div className='flex flex-row'>
+            <div className='flex flex-col space-y-1'>
+              <div className='flex flex-row space-x-2'>
                 <label htmlFor='sistema'>Sistema:</label>
                 <Field
                   className='border-solid border-gray-300 border py-2 px-1 w-full h-7 rounded text-gray-700'
-                  placeholder='Sistema'
+                  // placeholder='Sistema'
                   name={`sistema`}
                 />
                 <ErrorMessage name={`sistema`} />
               </div>
-              <div className='flex flex-row'>
+              <div className='flex flex-row space-x-2'>
                 {/* <label htmlFor='date'>Data:</label>
                 <Field
                   className='border-solid border-gray-300 border py-2 px-1 w-full h-7 rounded text-gray-700'
-                  placeholder='Data'
+                  // placeholder='Data'
                   name={`date`}
                 />
                 <ErrorMessage name={`date`} /> */}
@@ -93,11 +104,11 @@ const Index = () => {
                   onChange={setFieldValue}
                 />
               </div>
-              <div className='flex flex-row'>
+              <div className='flex flex-row space-x-2'>
                 <label htmlFor='version'>Versão:</label>
                 <Field
                   className='border-solid border-gray-300 border py-2 px-1 w-full h-7 rounded text-gray-700'
-                  placeholder='Versão'
+                  // placeholder='Versão'
                   name={`version`}
                 />
                 <ErrorMessage name={`version`} />
@@ -106,38 +117,38 @@ const Index = () => {
                 name='description'
                 render={arrayHelpers => {
                   const description = values.description
-                  console.log('arrayHelpers')
-                  console.log(arrayHelpers)
-                  console.log('touched')
-                  console.log(touched)
+                  // console.log('arrayHelpers')
+                  // console.log(arrayHelpers)
+                  // console.log('touched')
+                  // console.log(touched)
                   return (
                     <div>
                       {description && description.length > 0
                         ? description.map((user, index) => (
-                            <div key={index}>
-                              <div className='flex flex-row'>
+                            <div className='space-y-1' key={index}>
+                              <div className='flex flex-row space-x-2'>
                                 <label htmlFor='requisito'>Requisito:</label>
                                 <Field
                                   className='border-solid border-gray-300 border py-2 px-1 w-full h-7 rounded text-gray-700'
-                                  placeholder='Requisito'
+                                  // placeholder='Requisito'
                                   name={`description.${index}.requisito`}
                                 />
                                 <ErrorMessage
                                   name={`description.${index}.requisito`}
                                 />
                               </div>
-                              <div className='flex flex-row'>
+                              <div className='flex flex-row space-x-2'>
                                 <label htmlFor='title'>Título:</label>
                                 <Field
                                   className='border-solid border-gray-300 border py-2 px-1 w-full h-7 rounded text-gray-700'
-                                  placeholder='title'
+                                  // placeholder='title'
                                   name={`description.${index}.title`}
                                 />
                                 <ErrorMessage
                                   name={`description.${index}.title`}
                                 />
                               </div>
-                              <div className='flex flex-none'>
+                              <div className='flex space-x-2'>
                                 <label htmlFor='item'>Descrição:</label>
                                 <Field
                                   className='border-solid border-gray-300 border w-full rounded text-gray-700'
@@ -150,31 +161,40 @@ const Index = () => {
                                 />
                               </div>
 
-                              <button
-                                type='button'
-                                onClick={() => arrayHelpers.remove(index)}
-                              >
-                                -
-                              </button>
-                              <br />
+                              <div className='grid justify-items-end '>
+                                <button
+                                  className='text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-2 py-1.5 text-center mr-2 mb-2'
+                                  type='button'
+                                  onClick={() => arrayHelpers.remove(index)}
+                                >
+                                  Remover
+                                </button>
+                              </div>
                             </div>
                           ))
                         : null}
-                      <button
-                        type='button'
-                        onClick={() =>
-                          arrayHelpers.push({
-                            requisito: '',
-                            title: '',
-                            item: ''
-                          })
-                        }
-                      >
-                        add requisito
-                      </button>
-                      <br />
+                      <div className='grid justify-items-end '>
+                        <button
+                          type='button'
+                          className='text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-2 py-1.5 text-center mr-2 mb-2'
+                          onClick={() =>
+                            arrayHelpers.push({
+                              requisito: '',
+                              title: '',
+                              item: ''
+                            })
+                          }
+                        >
+                          add
+                        </button>
+                      </div>
                       <div>
-                        <button type='submit'>Form Submit</button>
+                        <button
+                          className='ext-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-2 py-1.5 text-center mr-2 mb-2'
+                          type='submit'
+                        >
+                          Cadastrar
+                        </button>
                       </div>
                     </div>
                   )
